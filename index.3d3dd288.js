@@ -21,7 +21,7 @@
   }
   var $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register = $2dfff19d9cd9948e3cd060b6f19e7e0e$var$register;
   var $2dfff19d9cd9948e3cd060b6f19e7e0e$export$resolve = $2dfff19d9cd9948e3cd060b6f19e7e0e$var$resolve;
-  $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register(JSON.parse("{\"59UkT\":\"index.fb737d95.js\",\"6pX4R\":\"dram.c70e5f79.png\"}"));
+  $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register(JSON.parse("{\"59UkT\":\"index.3d3dd288.js\",\"6pX4R\":\"dram.c70e5f79.png\"}"));
   // ASSET: node_modules/object-assign/index.js
   var $a97fdf3f34f3143396c5badd00ea054d$exports, $a97fdf3f34f3143396c5badd00ea054d$var$getOwnPropertySymbols, $a97fdf3f34f3143396c5badd00ea054d$var$hasOwnProperty, $a97fdf3f34f3143396c5badd00ea054d$var$propIsEnumerable, $a97fdf3f34f3143396c5badd00ea054d$executed = false;
   function $a97fdf3f34f3143396c5badd00ea054d$var$toObject(val) {
@@ -13975,7 +13975,7 @@ b" + i + "*=d\
   $e1fa745c0235610f7275370f048b9446$exports._relative = $e1fa745c0235610f7275370f048b9446$export$_relative;
   $c38224a163ab4b360be51c05c3a61cbd$exports = $481bf5f19ab08de2935ffb5a5afa9610$export$getBundleURL() + $e1fa745c0235610f7275370f048b9446$exports("59UkT", "6pX4R");
   var $c38224a163ab4b360be51c05c3a61cbd$$interop$default = /*@__PURE__*/$parcel$interopDefault($c38224a163ab4b360be51c05c3a61cbd$exports);
-  const $4fa137b5d57f96bb414f6c327cbd9005$var$grayCharset = ' .-~^*=#';
+  const $4fa137b5d57f96bb414f6c327cbd9005$var$grayCharset = ' .\'^-~*+=#';
   const $4fa137b5d57f96bb414f6c327cbd9005$var$sdfCharset = ' .\'`^_-~:+/\\|[]#';
   const $4fa137b5d57f96bb414f6c327cbd9005$var$sleep = async ms => {
     await new Promise(resolve => setTimeout(resolve, ms));
@@ -13990,9 +13990,10 @@ b" + i + "*=d\
     ctx.fillRect(0, 0, charWidth, charHeight);
     ctx.fillStyle = '#000000';
     ctx.font = charHeight.toString() + 'px monospace';
-    ctx.fillText(char, 0, charHeight - 5);
+    ctx.textBaseline = "top";
+    // change baseline property
+    ctx.fillText(char, 0, 0);
     // left bottom corner
-    // dirty -5 here, otherwise truncated
     // use the following appendChild to preview
     // document.body.appendChild(canvas);
     return ctx.getImageData(0, 0, charWidth, charHeight);
