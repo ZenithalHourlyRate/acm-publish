@@ -21,7 +21,7 @@
   }
   var $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register = $2dfff19d9cd9948e3cd060b6f19e7e0e$var$register;
   var $2dfff19d9cd9948e3cd060b6f19e7e0e$export$resolve = $2dfff19d9cd9948e3cd060b6f19e7e0e$var$resolve;
-  $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register(JSON.parse("{\"59UkT\":\"index.b92c57ae.js\",\"6pX4R\":\"dram.c70e5f79.png\"}"));
+  $2dfff19d9cd9948e3cd060b6f19e7e0e$export$register(JSON.parse("{\"59UkT\":\"index.fb737d95.js\",\"6pX4R\":\"dram.c70e5f79.png\"}"));
   // ASSET: node_modules/object-assign/index.js
   var $a97fdf3f34f3143396c5badd00ea054d$exports, $a97fdf3f34f3143396c5badd00ea054d$var$getOwnPropertySymbols, $a97fdf3f34f3143396c5badd00ea054d$var$hasOwnProperty, $a97fdf3f34f3143396c5badd00ea054d$var$propIsEnumerable, $a97fdf3f34f3143396c5badd00ea054d$executed = false;
   function $a97fdf3f34f3143396c5badd00ea054d$var$toObject(val) {
@@ -13975,32 +13975,30 @@ b" + i + "*=d\
   $e1fa745c0235610f7275370f048b9446$exports._relative = $e1fa745c0235610f7275370f048b9446$export$_relative;
   $c38224a163ab4b360be51c05c3a61cbd$exports = $481bf5f19ab08de2935ffb5a5afa9610$export$getBundleURL() + $e1fa745c0235610f7275370f048b9446$exports("59UkT", "6pX4R");
   var $c38224a163ab4b360be51c05c3a61cbd$$interop$default = /*@__PURE__*/$parcel$interopDefault($c38224a163ab4b360be51c05c3a61cbd$exports);
-  const $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth = 10;
-  // pixel
-  const $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight = 20;
-  // pixel
   const $4fa137b5d57f96bb414f6c327cbd9005$var$grayCharset = ' .-~^*=#';
   const $4fa137b5d57f96bb414f6c327cbd9005$var$sdfCharset = ' .\'`^_-~:+/\\|[]#';
   const $4fa137b5d57f96bb414f6c327cbd9005$var$sleep = async ms => {
     await new Promise(resolve => setTimeout(resolve, ms));
   };
-  const $4fa137b5d57f96bb414f6c327cbd9005$var$font2img = async char => {
+  const $4fa137b5d57f96bb414f6c327cbd9005$var$font2img = async (char, charHeight) => {
+    const charWidth = Math.round(charHeight / 2);
     const canvas = document.createElement('CANVAS');
-    canvas.height = $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight;
-    canvas.width = $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth;
+    canvas.height = charHeight;
+    canvas.width = charWidth;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(0, 0, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight);
+    ctx.fillRect(0, 0, charWidth, charHeight);
     ctx.fillStyle = '#000000';
-    ctx.font = $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight.toString() + 'px monospace';
-    ctx.fillText(char, 0, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight - 5);
+    ctx.font = charHeight.toString() + 'px monospace';
+    ctx.fillText(char, 0, charHeight - 5);
     // left bottom corner
     // dirty -5 here, otherwise truncated
     // use the following appendChild to preview
     // document.body.appendChild(canvas);
-    return ctx.getImageData(0, 0, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight);
+    return ctx.getImageData(0, 0, charWidth, charHeight);
   };
-  const $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf = async data => {
+  const $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf = async (data, charHeight) => {
+    const charWidth = Math.round(charHeight / 2);
     const gray = data.data.reduce((r, c, i, a) => {
       if (i % 4 == 0) r.push((a[i] + a[i + 1] + a[i + 2]) / 3 < 127 ? 1 : 0);
       return r;
@@ -14008,8 +14006,8 @@ b" + i + "*=d\
     // why less than? different lib has different def
     const inv = gray.map(g => 1 - g);
     // invert
-    const sdfArray = $e8ae97f6472f3746f501d0b1d2732b57$$interop$default($c819e6fc7d8c020cdc7adf1b889fd7da$$interop$default(gray, [$4fa137b5d57f96bb414f6c327cbd9005$var$charHeight, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth])).data;
-    const sdfArrayInv = $e8ae97f6472f3746f501d0b1d2732b57$$interop$default($c819e6fc7d8c020cdc7adf1b889fd7da$$interop$default(inv, [$4fa137b5d57f96bb414f6c327cbd9005$var$charHeight, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth])).data;
+    const sdfArray = $e8ae97f6472f3746f501d0b1d2732b57$$interop$default($c819e6fc7d8c020cdc7adf1b889fd7da$$interop$default(gray, [charHeight, charWidth])).data;
+    const sdfArrayInv = $e8ae97f6472f3746f501d0b1d2732b57$$interop$default($c819e6fc7d8c020cdc7adf1b889fd7da$$interop$default(inv, [charHeight, charWidth])).data;
     let sdfArraySum = sdfArray.map((c, i) => c + sdfArrayInv[i]);
     // normalize sdfArraySum
     const m = Math.min(...sdfArraySum);
@@ -14026,7 +14024,22 @@ b" + i + "*=d\
   };
   var $4fa137b5d57f96bb414f6c327cbd9005$export$default = /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.memo(() => {
     const [charSdf, setCharSdf] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState([]);
-    $6cebeac97b4ebedf27e6f4c716f2d918$init().useEffect(() => Array.from($4fa137b5d57f96bb414f6c327cbd9005$var$sdfCharset).map(c => $4fa137b5d57f96bb414f6c327cbd9005$var$font2img(c).then(m => $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf(m).then(m => setCharSdf(sdf => [...sdf, [c, m]])))), []);
+    const [charHeight, setCharHeight] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState(20);
+    // pixel
+    // we assume charWidth = charHeight/2
+    const handleCharHeightPlus = e => {
+      if (charHeight < 40) {
+        setCharHeight(h => h + 1);
+        setCharSdf([]);
+      }
+    };
+    const handleCharHeightMinus = e => {
+      if (charHeight > 10) {
+        setCharHeight(h => h - 1);
+        setCharSdf([]);
+      }
+    };
+    $6cebeac97b4ebedf27e6f4c716f2d918$init().useEffect(() => Array.from($4fa137b5d57f96bb414f6c327cbd9005$var$sdfCharset).map(c => $4fa137b5d57f96bb414f6c327cbd9005$var$font2img(c, charHeight).then(m => $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf(m, charHeight).then(m => setCharSdf(sdf => [...sdf, [c, m]])))), [charHeight]);
     const [imgUrl, setImgUrl] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState($c38224a163ab4b360be51c05c3a61cbd$$interop$default);
     const handleUpload = e => setImgUrl(URL.createObjectURL(e.target.files[0]));
     const [imgHeight, setImgHeight] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState(0);
@@ -14052,7 +14065,8 @@ b" + i + "*=d\
     const grayRender = async (i, j) => {
       // sleep for some random time
       await $4fa137b5d57f96bb414f6c327cbd9005$var$sleep(100 * Math.random());
-      const data = ctx.getImageData($4fa137b5d57f96bb414f6c327cbd9005$var$charWidth * i, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight * j, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight).data;
+      const charWidth = Math.round(charHeight / 2);
+      const data = ctx.getImageData(charWidth * i, charHeight * j, charWidth, charHeight).data;
       const gray = data.reduce((r, c, i, a) => {
         if (i % 4 == 0) r.push((a[i] + a[i + 1] + a[i + 2]) / 3);
         return r;
@@ -14063,43 +14077,79 @@ b" + i + "*=d\
     const sdfRender = async (i, j) => {
       // sleep for some random time
       await $4fa137b5d57f96bb414f6c327cbd9005$var$sleep(100 * Math.random());
-      const imageData = ctx.getImageData($4fa137b5d57f96bb414f6c327cbd9005$var$charWidth * i, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight * j, $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth, $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight);
-      const sdf = await $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf(imageData);
+      const charWidth = Math.round(charHeight / 2);
+      const imageData = ctx.getImageData(charWidth * i, charHeight * j, charWidth, charHeight);
+      const sdf = await $4fa137b5d57f96bb414f6c327cbd9005$var$img2sdf(imageData, charHeight);
       return charSdf.map(([k, v]) => [k, v.map((w, i) => Math.floor(Math.abs(w - sdf[i]))).reduce((r, c) => r + c, 0)]).reduce((r, c) => r[0] ? r[1] > c[1] ? c : r : c, ['', 0])[0];
+    };
+    const renderFuncs = [["sdf", sdfRender], ["gray", grayRender]];
+    const [renderFunc, setRenderFunc] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState(0);
+    const iterateRenderFunc = e => {
+      setRenderFunc(r => (r + 1) % renderFuncs.length);
     };
     const [acm, setAcm] = $6cebeac97b4ebedf27e6f4c716f2d918$init().useState([[]]);
     $6cebeac97b4ebedf27e6f4c716f2d918$init().useEffect(() => {
       if (!ctx || imgHeight == 0 || imgWidth == 0) {
         return;
       }
-      setAcm(Array.from(Array(Math.floor(imgHeight / $4fa137b5d57f96bb414f6c327cbd9005$var$charHeight)), () => Array(Math.floor(imgWidth / $4fa137b5d57f96bb414f6c327cbd9005$var$charWidth)).fill('#')));
-    }, [ctx, imgHeight, imgWidth]);
+      const charWidth = Math.round(charHeight / 2);
+      const acmHeight = Math.floor(imgHeight / charHeight);
+      const acmWidth = Math.floor(imgWidth / charWidth);
+      const defaultAcm = Array.from(Array(acmHeight), () => Array(acmWidth).fill('#'));
+      // now copy contents of old acm
+      acm.forEach((l, j) => l.forEach((c, i) => {
+        if (j < acmHeight && i < acmWidth) defaultAcm[j][i] = c;
+      }));
+      setAcm(defaultAcm);
+    }, [ctx, imgHeight, imgWidth, charHeight]);
     $6cebeac97b4ebedf27e6f4c716f2d918$init().useEffect(() => {
       if (charSdf.length != $4fa137b5d57f96bb414f6c327cbd9005$var$sdfCharset.length) {
         return;
       }
       // do not render when charSdf is not ready
-      acm.forEach((l, j) => l.forEach((c, i) => sdfRender(i, j).then(m => {
+      acm.forEach((l, j) => l.forEach((c, i) => renderFuncs[renderFunc][1](i, j).then(m => {
         acm[j][i] = m;
         setRenderNum(n => n + 1);
       })));
-    }, [acm, charSdf]);
+    }, [acm, charSdf, renderFunc]);
     return (
       /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
         className: "tool"
-      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("input", {
+      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("h2", null, "Input Image"), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        className: "content"
+      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("label", {
+        htmlFor: "imgfile",
+        className: "img-input-label"
+      }, imgUrl), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("input", {
+        id: "imgfile",
         type: "file",
         accept: "image/*",
-        onChange: handleUpload
-      }), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", null, "Rendered: ", renderNum), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        onChange: handleUpload,
+        className: "img-input"
+      })), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("h2", null, "Font Size"), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        className: "content"
+      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("span", null, charHeight), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("span", {
+        className: "button",
+        onClick: handleCharHeightPlus
+      }, "+"), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("span", {
+        className: "button",
+        onClick: handleCharHeightMinus
+      }, "-")), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("h2", null, "Render Method"), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        className: "content"
+      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("span", null, renderFuncs[renderFunc][0]), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("span", {
+        className: "button",
+        onClick: iterateRenderFunc
+      }, "+")), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("h2", null, "Rendered"), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        className: "content"
+      }, renderNum), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
         className: "display"
       }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
+        className: "dst-acm"
+      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("pre", null, acm.map(l => l.join('')).join('\n'))), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
         className: "src-img"
       }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("img", {
         src: imgUrl
-      })), /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("div", {
-        className: "dst-acm"
-      }, /*#__PURE__*/$6cebeac97b4ebedf27e6f4c716f2d918$$interop$default.createElement("pre", null, acm.map(l => l.join('')).join('\n')))))
+      }))))
     );
   });
   function $4b1ffdda2a341722ebd790ffdb86b047$var$bootstrap() {
